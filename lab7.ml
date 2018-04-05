@@ -338,12 +338,15 @@ place. Hint: First scale, then translate the center to its original
 position.
 ......................................................................*)
 
-(*class square_center_scale (p: point) (s: float) : shape = 
+class square_center_scale (p: point) (s: float) : shape = 
 object(this)
   inherit square p s as super
-  method scale (k : float) : unit = 
-    super#scale;
-    translate () *)
+    method! scale k = 
+      let (x0,y0) = this#center in
+      super#scale k;
+      let (c1, c2) = this#center in
+      super#translate (c1 -. x0, c2 -. y0)
+end ;;    
 
      
 (* Before we move on, consider: do you need to make any modifications
@@ -411,11 +414,11 @@ that implements a quad class type. Hint: By taking advantage of
 existing classes, you should only need to implement a single method.
 ......................................................................*)
   
-(* UNCOMMENT ME
 class rect_quad (p : point) (w : float) (h : float) : quad =
   object
+    inherit rect p w h
+      method sides = failwith "rect_quad not implemented"
   end ;;
- *)
 
 (*......................................................................
 Exercise 4B: Complete a class, square_quad, that represents a square
@@ -423,11 +426,11 @@ that implements a quad class type. Hint: you shouldn't need to
 implement any methods!
 ......................................................................*)
 
-(* UNCOMMENT ME
 class square_quad (p : point) (s : float) : quad =
   object
+    inherit square p s
+      method sides = failwith "square_quad not implemented"
   end ;;
-*)
 
 (* Remember Exercise 2D, in which you implemented an area function for
 shapes? Amazingly, even though we have continued to create new shapes,
@@ -439,12 +442,9 @@ Exercise 4C: Create an instance of square_quad and name it sq. Then,
 pass it to the area function to find out its area and store the result
 in a variable "a".
 ......................................................................*)
-   
-(* UNCOMMENT ME
-let sq : quad = .. ;;
+let sq : quad = failwith "sq not implemented" ;;
 
-let a = .. ;;
-*)
+let a = failwith "a not implemented" ;;
 
 (*......................................................................
 Exercise 4D: Write a function, area_list, that accepts a list of
