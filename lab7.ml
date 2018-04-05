@@ -442,9 +442,9 @@ Exercise 4C: Create an instance of square_quad and name it sq. Then,
 pass it to the area function to find out its area and store the result
 in a variable "a".
 ......................................................................*)
-let sq : quad = failwith "sq not implemented" ;;
+(*let sq : quad = failwith "sq not implemented" ;;
 
-let a = failwith "a not implemented" ;;
+let a = failwith "a not implemented" ;;*)
 
 (*......................................................................
 Exercise 4D: Write a function, area_list, that accepts a list of
